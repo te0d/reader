@@ -1,0 +1,12 @@
+<h1>Feeds</h1>
+<ul>
+<% for feed in @feeds %>
+  <li><a href="show/<%= feed._id %>"><%= feed.title %></a> <a href="delete/<%= feed._id %>" method="delete">X</a></li>
+<% end %>
+</ul>
+
+<h2>Add New:</h2>
+<form action="/new" method="post">
+  <input name="url">
+  <input type="submit" value="Add New">
+</form>

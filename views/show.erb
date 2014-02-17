@@ -1,0 +1,7 @@
+<h1><%= @feed.title %> (<a href="<%= @feed.url %>"><%= @feed.url %></a>)</h1>
+
+<ul>
+<% for entry in @entries %>
+  <li><a href="<%= entry.url %>"><%= entry.title %></a></li>
+<% end %>
+</ul>
