@@ -1,7 +1,9 @@
-<h1><%= @feed.title %> (<a href="<%= @feed.url %>"><%= @feed.url %></a>)</h1>
+  <h1><%= @feed.title %> <small><a href="<%= @feed.url %>"><%= @feed.url %></a></small></h1>
 
-<ul>
-<% for entry in @entries %>
-  <li><a href="<%= entry.url %>"><%= entry.title %></a></li>
-<% end %>
-</ul>
+  <table class="table table-striped">
+  <% for entry in @entries %>
+    <tr>
+      <td><a href="<%= entry.url %>"><%= entry.title %></a></td>
+    </tr>
+  <% end %>
+  </table>

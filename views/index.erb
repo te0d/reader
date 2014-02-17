@@ -1,12 +1,20 @@
-<h1>Feeds</h1>
-<ul>
-<% for feed in @feeds %>
-  <li><a href="show/<%= feed._id %>"><%= feed.title %></a> <a href="delete/<%= feed._id %>" method="delete">X</a></li>
-<% end %>
-</ul>
+<div class="row">
+  <div class="col-xs-8">
+    <h1>Feeds</h1>
+    <table class="table table-striped">
+    <% for feed in @feeds %>
+      <tr>
+        <td><a href="show/<%= feed._id %>"><%= feed.title %></a></td>
+        <td><a href="delete/<%= feed._id %>" method="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
 
-<h2>Add New:</h2>
-<form action="/new" method="post">
-  <input name="url">
-  <input type="submit" value="Add New">
-</form>
+  <div class="col-xs-4">
+    <h2 class="text-right">Add New</h2>
+    <form role="form" action="/new" method="post">
+      <input class="form-control" name="url" placeholder="Enter URL..." />
+    </form>
+  </div>
+</div>
