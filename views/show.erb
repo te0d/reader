@@ -1,9 +1,11 @@
-  <h1><%= @feed.title %> <small><a href="<%= @feed.url %>"><%= @feed.url %></a></small></h1>
+<h1><%= @feed.title %> <small><a href="<%= @feed.url %>"><%= @feed.url %></a></small></h1>
 
-  <table class="table table-striped">
-  <% for entry in @entries %>
-    <tr>
-      <td><a href="<%= entry.url %>"><%= entry.title %></a></td>
-    </tr>
-  <% end %>
-  </table>
+<table class="table table-striped">
+<% for entry in @entries %>
+  <tr>
+    <td><%= entry.published.to_formatted_s(:short) %></td>
+    <td><a href="<%= entry.url %>"><%= entry.title %></a></td>
+    <td><%= entry.summary.gsub(%r{</?[^>]+?>}, '').slice(0,250) %>...</td>
+  </tr>
+<% end %>
+</table>

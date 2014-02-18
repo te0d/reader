@@ -33,12 +33,10 @@ class Reader < Sinatra::Base
 
 	get "/show/:id" do |id|
 	  @feed = Feed.find(id)
-	  @entries = []
 
     rss = Feedzirra::Feed.fetch_and_parse(@feed.url)
-    rss.entries.each do |entry|
-      @entries.push(entry)
-    end
+    rss.sanitize_entries!
+    @entries = rss.entries
 	  
 	  erb :show
 	end
