@@ -5,7 +5,7 @@
   <tr>
     <td><%= entry.published.to_formatted_s(:short) %></td>
     <td><a href="<%= entry.url %>"><%= entry.title %></a></td>
-    <td><%= entry.summary.gsub(%r{</?[^>]+?>}, '').slice(0,250) %>...</td>
+    <td><%= entry.summary.gsub(%r{</?[^>]+?>}, '').slice(0,250) + '...' if entry.summary %></td>
   </tr>
 <% end %>
 </table>
