@@ -21,6 +21,19 @@ class Reader < Sinatra::Base
     has_and_belongs_to_many :feeds
   end
 
+  helpers do
+    def protected!
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['CLOUD_USER'], ENV['CLOUD_PASS']]
+    end
+  end
+
 	get "/" do 
 	  @feeds = Feed.all
     @tag_names = Tag.all.pluck(:name)
@@ -29,6 +42,8 @@ class Reader < Sinatra::Base
 	end
 
 	post "/new" do 
+    protected!
+
 	  url = params[:url]
     feed_tags = params[:tags]
     rss = Feedzirra::Feed.fetch_and_parse(url)
@@ -63,6 +78,8 @@ class Reader < Sinatra::Base
   end
 
   post "/update" do
+    protected!
+
     id = params[:id]
     feed = Feed.find(id)
     feed.tags.clear
@@ -76,6 +93,8 @@ class Reader < Sinatra::Base
   end
 
 	get "/delete/:id" do |id|
+    protected!
+
 	  @feed = Feed.find(id)
 	  @feed.delete
 
