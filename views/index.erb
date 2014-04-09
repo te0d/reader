@@ -4,7 +4,7 @@
     <table class="table table-striped">
     <% for feed in @feeds %>
       <tr>
-        <td><a href="show/<%= feed._id %>"><%= feed.title %></a></td>
+        <td><a href="/show/<%= feed._id %>"><%= feed.title %></a></td>
         <td><%= feed.tags.pluck(:name).join(", ") if feed.tags %></td>
         <td>
           <a class = "btn btn-warning btn-xs" href="/edit/<%= feed._id %>"><span class="glyphicon glyphicon-pencil"></span></a>
