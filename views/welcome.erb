@@ -1,11 +1,20 @@
 <div class="row">
   <div class="col-xs-8">
-    <h1>Feeds</h1>
+    <h1>Popular Feeds</h1>
     <table class="table table-striped">
-    <% for feed in @feeds %>
+    <% for feed in @popular_feeds %>
       <%= erb :feed_row_item, locals: { feed: feed } %>
     <% end %>
     </table>
+
+    <h1>Recently Added Feeds</h1>
+    <table class="table table-striped">
+    <% for feed in @recent_feeds %>
+      <%= erb :feed_row_item, locals: { feed: feed } %>
+    <% end %>
+    </table>
+
+    <p><a href="/feeds" class="btn btn-info">View All</a></p>
   </div>
 
   <div class="col-xs-4">

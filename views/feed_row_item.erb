@@ -1,0 +1,8 @@
+<tr>
+  <td><a href="/feeds/show/<%= feed._id %>"><%= feed.title %></a></td>
+  <td><%= feed.tags.pluck(:name).join(", ") if feed.tags %></td>
+  <td>
+    <a class = "btn btn-warning btn-xs" href="/feeds/edit/<%= feed._id %>"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class = "btn btn-danger btn-xs" href="/feeds/delete/<%= feed._id %>" method="delete"><span class="glyphicon glyphicon-trash"></span></a>
+  </td>
+</tr>

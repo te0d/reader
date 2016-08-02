@@ -1,5 +1,5 @@
 <h1>Edit Feed: <%= @feed.title %></h1>
-<form role="form" action="/update" method="post">
+<form role="form" action="/feeds/update" method="post">
   <div class="form-group">
     <label for="tags">Tags</label>
     <input class="form-control" name="tags" value="<%= @feed.tags.pluck(:name).join(' ') %>" />

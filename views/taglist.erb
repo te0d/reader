@@ -1,0 +1,5 @@
+<ul class="list-group">
+<% for tag in tags %>
+  <li class="list-group-item"><a href="/feeds/tags/<%= tag.name %>"><%= tag.name %></a> <span class="pull-right">(<%= tag.feeds.length %>)</span></li>
+<% end %>
+</ul>
