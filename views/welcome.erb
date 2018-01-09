@@ -1,5 +1,14 @@
 <div class="row">
   <div class="col-xs-8">
+    <h1>Headline</h1>
+    <% if @headlines.length > 0 %>
+      <% for headline in @headlines %>
+        <h3><%= headline.tag_name %></h3>
+        <p><a href="<%= headline.article_url %>"><%= headline.article_title %></a></p>
+      <% end %>
+    <% else %>
+      <p>You don't have any headlines. Go to a tag's page and add it as a headline.</p>
+    <% end %>
     <h1>Popular Feeds</h1>
     <table class="table table-striped">
     <% for feed in @popular_feeds %>

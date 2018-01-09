@@ -1,3 +1,7 @@
+<% if @tag_name != nil && !@isHeadline %>
+  <a href="/headlines/new/<%= @tag_name %>">Add as Headline</a>
+<% end %>
+
 <div class="row">
   <div class="col-xs-8">
     <h1>Feeds</h1>
